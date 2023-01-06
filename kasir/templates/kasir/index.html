@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Kasir</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="row">
+      <div class="column" style="float: left;width: 20%;">
+        <img class="card-img-top" src="templates/image/mieyam.jpg" alt="Card image cap">
+      </div>
+      <div class="column" style="float: left;width: 80%;">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Mie Ayam Bakso</h5>
+        </div>
+        <p class="mb-1">Mie ayam dengan bakso enak dan kuah melimpah</p>
+        <h6>50.000</h6>
+        <small>(+) (-)</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+{% endblock content %}
