@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load static %} {% block meta %}
+<title>Kasir</title>
+{% endblock meta %} {% block content %}
+<h1>List Transaksi</h1>
+{% for transaksi in transaksis %}
+  <h4>{{transaksi.waktu}}</h4>
+  <h4>{{transaksi.total_harga}}</h4>
+  {% for item in transaksi.detailtransaksi_set.all %}
+  {% if item.jumlah > 0 %}
+    <h5>{{item.menu.nama}} {{item.jumlah}}</h5>
+  {% endif %}  
+  {% endfor %}  
+  </br>
+{% endfor %}
+{% endblock content %} 
+{% block script %}
+<script src="{% static 'js/kasir.js' %}"></script>
+{% endblock script %}
