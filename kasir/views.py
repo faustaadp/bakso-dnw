@@ -8,7 +8,7 @@ def index(request):
     if request.method == 'POST':
         form = OrderForm(request.POST, menu=menus)
         if form.is_valid():
-            transaksi = Transaksi.objects.create(waktu=datetime.datetime.now().time(), total_harga=0)
+            transaksi = Transaksi.objects.create(waktu=datetime.datetime.now(), total_harga=0, status=False)
             for key, value in request.POST.items():
                 if(Menu.objects.filter(nama=str(key)).exists()):
                     transaksi.total_harga += int(Menu.objects.filter(nama=str(key)).first().harga) * int(value)
@@ -18,7 +18,6 @@ def index(request):
     else:
         form = OrderForm(menu=menus)
     return render(request, 'kasir/index.html', {'form': form, 'menus': menus})
-    # return render(request, 'kasir/index.html', {'menus': menus})
 
 def list_transaksi(request):
     transaksis = Transaksi.objects.all()

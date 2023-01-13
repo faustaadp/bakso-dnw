@@ -1,25 +1,28 @@
 {% extends 'base.html' %} {% load static %} {% block meta %}
 <title>Kasir</title>
+<link rel="stylesheet" href="{% static 'css/kasir.css' %}" />
 {% endblock meta %} {% block content %}
 <h1>Kasir</h1>
 <form id="form-kasir" method="post" action="{% url 'index' %}">
   {% csrf_token %}
-  <table>
-    <tr>
-      <th>Menu</th>
-      <th>Jumlah</th>
-      <th>Harga</th>
-      <th>Subtotal</th>
-    </tr>
-    {% for menu in menus %}
-    <tr>
-      <td>{{ menu.nama }}</td>
-      <td><input type="number" name="{{ menu.nama }}" value="0" class="form-control jumlah-item" data-harga="{{ menu.harga }}" min="0"/></td>
-      <td>{{ menu.harga }}</td>
-      <td class="subtotal">0</td>
-    </tr>
-    {% endfor %}
-  </table>
+  {% for menu in menus %}
+  <div class="card d-flex margin-card">
+    <div class="card-image">
+      <img class="img-responsive" src="{{ menu.gambar.url }}" alt="{{ menu.nama }}">
+    </div>
+    <div class="card-content">
+      <h5 class="card-title">{{ menu.nama }}</h5>
+      <div class="input-group">
+        <button type="button" class="btn-decrement">-</button>
+        <input type="number" name="{{ menu.nama }}" value="0" class="form-control jumlah-item" data-harga="{{ menu.harga }}" min="0"/>
+        <button type="button" class="btn-increment">+</button>
+      </div>
+    </div>
+    <div class="card-price text-center">
+      <p>{{ menu.harga }}</p>
+    </div>
+  </div>    
+  {% endfor %}
   <h3 id="total">0</h3>
   <button type="submit">Submit Order</button>
 </form>

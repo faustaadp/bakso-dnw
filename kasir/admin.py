@@ -7,7 +7,7 @@ class KategoriAdmin(admin.ModelAdmin):
 admin.site.register(Kategori, KategoriAdmin)
 
 class MenuAdmin(admin.ModelAdmin):
-    list_display    = ['nama']
+    list_display    = ['nama', 'harga', 'kategori', 'gambar']
 admin.site.register(Menu, MenuAdmin)
 
 class TransaksiAdmin(admin.ModelAdmin):
