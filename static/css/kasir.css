@@ -1,7 +1,6 @@
 .input-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .harga {
@@ -10,7 +9,7 @@
 }
 
 .input-group input {
-  width: 50px;
+  width: 5px;
   margin: 0 5px;
 }
 
@@ -21,24 +20,29 @@
 
 .card {
   width: 100%;
+  border-radius: 5px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .card-image {
   width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-content {
-  width: 50%;
+  width: 45%;
   align-items: center; /* tambahkan ini */
 }
 
 .card-price {
-  width: 25%;
+  width: 30%;
   text-align: right;
-  display: flex; /* Tambahkan properti ini */
-  align-items: center; /* Tambahkan properti ini */
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -60,5 +64,37 @@
 }
 
 .card-title {
+  padding-top: 10px;
   text-align: left; /* hapus text-align: center; */
+}
+
+.btn-circle {
+  background-color: darkblue;
+  color: white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 0px 0;
+  font-size: 18px;
+  line-height: 1.428571429;
+  border-radius: 15px; /* set radius sesuai dengan ukuran tombol */
+}
+
+#input {
+  flex: unset;
+  width: 40px;
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+  border: 0px;
+}
+
+#harga {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+}
+
+img {
+  border-radius: 10px; /* atau ukuran lain sesuai keinginan */
 }

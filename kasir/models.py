@@ -16,6 +16,7 @@ class Menu(models.Model):
 class Transaksi(models.Model):
     status = models.BooleanField()
     waktu = models.DateTimeField()
+    total_item = models.PositiveIntegerField()
     total_harga = models.PositiveIntegerField()
 
 class DetailTransaksi(models.Model):

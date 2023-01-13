@@ -1,18 +1,31 @@
 {% extends 'base.html' %} {% load static %} {% block meta %}
-<title>Kasir</title>
+<title>List Transaksi</title>
+<link rel="stylesheet" href="{% static 'css/list_transaksi.css' %}" />
 {% endblock meta %} {% block content %}
-<h1>List Transaksi</h1>
+{% block atas %} <span>List Transaksi</span> {% endblock atas %}
 {% for transaksi in transaksis %}
-  <h4>{{transaksi.waktu}}</h4>
-  <h4>{{transaksi.total_harga}}</h4>
-  {% for item in transaksi.detailtransaksi_set.all %}
-  {% if item.jumlah > 0 %}
-    <h5>{{item.menu.nama}} {{item.jumlah}}</h5>
-  {% endif %}  
-  {% endfor %}  
-  </br>
+  <div class="card d-flex margin-card">
+    <div class="card-left">
+      <div>Order #{{transaksi.id}}</div>
+      <div>Total item: {{transaksi.total_item}}</div>
+    </div>
+    <div class="card-content">
+      <div>Rp {{ transaksi.total_harga|floatformat:0 }}</div>
+    </div>
+    <div class="card-price text-center">
+      <div>{{ transaksi.waktu|time:"H:i" }}</div>
+      <div>
+        {% if transaksi.status %}
+          <div class="status-box green">Sudah Bayar</div>
+        {% else %}
+          <div class="status-box red">Belum Bayar</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>      
 {% endfor %}
 {% endblock content %} 
 {% block script %}
+{% block button %} Simpan {% endblock button %}
 <script src="{% static 'js/kasir.js' %}"></script>
 {% endblock script %}
