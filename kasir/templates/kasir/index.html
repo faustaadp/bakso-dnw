@@ -2,7 +2,7 @@
 <title>Kasir</title>
 <link rel="stylesheet" href="{% static 'css/kasir.css' %}" />
 {% endblock meta %} {% block content %}
-<h1>Kasir</h1>
+{% block atas %} <span>Kasir</span> {% endblock atas %}
 <form id="form-kasir" method="post" action="{% url 'index' %}" class="form">
   <div class="luar">
     {% csrf_token %}
@@ -25,6 +25,7 @@
     </div>    
     {% endfor %}
     <h3 id="total">0</h3>
+    {% block button %} Simpan {% endblock button %}
     <button type="submit">Submit Order</button>
   </div>
 </form>

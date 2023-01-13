@@ -6,3 +6,9 @@ body {
   font-family: 'Rubik', sans-serif;
 }
 
+.header-title-custom {
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding-top:10px;
+}
