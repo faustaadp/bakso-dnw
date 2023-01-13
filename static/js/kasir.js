@@ -2,11 +2,13 @@ $(document).ready(function() {
   // Menjumlahkan semua subtotal dan menampilkan di element #total
   function updateTotalHarga() {
     let totalHarga = 0;
-    const subtotals = document.querySelectorAll('.subtotal');
-    subtotals.forEach(function(subtotal) {
-      totalHarga += parseInt(subtotal.innerHTML);
+    let jumlahItems = document.querySelectorAll('.jumlah-item');
+    // Saya ingin for loop setiap item dan mengambil harga dan jumlah, lalu totalHarga += harga * jumlah
+    jumlahItems.forEach(item => {
+      let harga = item.getAttribute('data-harga');
+      let jumlah = item.value;
+      totalHarga += harga * jumlah;
     });
-
     document.querySelector('#total').innerHTML = totalHarga;
   }
 
@@ -41,5 +43,15 @@ $(document).ready(function() {
       input.trigger('input');
       updateTotalHarga();
     }
+  });
+
+  document.querySelectorAll('.jumlah-item').forEach(function(input) {
+    input.addEventListener('change', function() {
+      var total = 0;
+      document.querySelectorAll('.jumlah-item').forEach(function(input) {
+        total += parseInt(input.value) * parseInt(input.dataset.harga);
+      });
+      document.querySelector('#total').innerHTML = total;
+    });
   });
 });

@@ -1,0 +1,82 @@
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.harga {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.input-group input {
+  width: 50px;
+  margin: 0 5px;
+}
+
+.input-group button {
+  width: 30px;
+  height: 30px;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+.card-left {
+  width: 35%;
+}
+
+.card-content {
+  width: 30%;
+  align-items: center; /* tambahkan ini */
+}
+
+.card-price {
+  width: 35%;
+  text-align: right;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.card-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-title {
+  text-align: left; /* hapus text-align: center; */
+}
+
+.luar {
+  padding: 5px;
+}
+
+.status-box {
+  padding: 5px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.status-box.green {
+  background-color: green;
+  color: white;
+}
+
+.status-box.red {
+  background-color: red;
+  color: white;
+}
