@@ -2,7 +2,7 @@
 <title>Kasir</title>
 <link rel="stylesheet" href="{% static 'css/kasir.css' %}" />
 {% endblock meta %} {% block content %}
-<h1>Kasir</h1>
+{% block atas %} <span>Kasir</span> {% endblock atas %}
 <form id="form-kasir" method="post" action="{% url 'index' %}">
   {% csrf_token %}
   {% for menu in menus %}
@@ -24,7 +24,7 @@
   </div>    
   {% endfor %}
   <h3 id="total">0</h3>
-  <button type="submit">Submit Order</button>
+  {% block button %} Simpan {% endblock button %} 
 </form>
 {% endblock content %} 
 {% block script %}
