@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block meta %}
 <title>Kasir</title>
 <link rel="stylesheet" href="{% static 'css/kasir.css' %}" />
-{% endblock meta %} {% block content %}
+{% endblock meta %} 
 {% block atas %} <span>Kasir</span> {% endblock atas %}
+{% block content %}
 <form id="form-kasir" method="post" action="{% url 'index' %}" class="form">
   <div class="luar">
     {% csrf_token %}
@@ -24,12 +25,25 @@
       </div>
     </div>    
     {% endfor %}
-    <h3 id="total">0</h3>
-    {% block button %} Simpan {% endblock button %}
-    <button type="submit">Submit Order</button>
   </div>
 </form>
 {% endblock content %} 
+{% block tambahan %}
+<h5>
+<div class="d-flex">
+  <div>
+    Total Harga
+  </div>
+  <div class="ml-auto d-flex">
+    <div>Rp&nbsp;</div>
+    <div id="total">
+      0
+    </div>  
+  </div>
+</div>
+</h5>
+{% endblock tambahan %} 
+{% block button %} Simpan {% endblock button %}
 {% block script %}
 <script src="{% static 'js/kasir.js' %}"></script>
 {% endblock script %}

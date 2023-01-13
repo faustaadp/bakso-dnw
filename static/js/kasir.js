@@ -54,4 +54,7 @@ $(document).ready(function() {
       document.querySelector('#total').innerHTML = total;
     });
   });
+  document.getElementById("submit").addEventListener("click", function(){
+    document.getElementById("form-kasir").submit();
+    });
 });

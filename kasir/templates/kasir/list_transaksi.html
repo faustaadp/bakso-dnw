@@ -2,7 +2,7 @@
 <title>List Transaksi</title>
 <link rel="stylesheet" href="{% static 'css/list_transaksi.css' %}" />
 {% endblock meta %} {% block content %}
-<h1>List Transaksi</h1>
+{% block atas %} <span>List Transaksi</span> {% endblock atas %}
 {% for transaksi in transaksis %}
   <div class="card d-flex margin-card">
     <div class="card-left">
@@ -26,5 +26,6 @@
 {% endfor %}
 {% endblock content %} 
 {% block script %}
+{% block button %} Simpan {% endblock button %}
 <script src="{% static 'js/kasir.js' %}"></script>
 {% endblock script %}
