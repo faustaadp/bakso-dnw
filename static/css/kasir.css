@@ -1,0 +1,64 @@
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.harga {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.input-group input {
+  width: 50px;
+  margin: 0 5px;
+}
+
+.input-group button {
+  width: 30px;
+  height: 30px;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-image {
+  width: 25%;
+}
+
+.card-content {
+  width: 50%;
+  align-items: center; /* tambahkan ini */
+}
+
+.card-price {
+  width: 25%;
+  text-align: right;
+  display: flex; /* Tambahkan properti ini */
+  align-items: center; /* Tambahkan properti ini */
+  justify-content: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.card-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-title {
+  text-align: left; /* hapus text-align: center; */
+}
