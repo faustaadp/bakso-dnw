@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
     path('list-transaksi', views.list_transaksi, name='list_transaksi'),
+    path('detail/<int:id>', views.detail, name='detail'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

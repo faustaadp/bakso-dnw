@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% load static %} {% block meta %}
+<title>Detail Transaksi</title>
+<link rel="stylesheet" href="{% static 'css/detail_transaksi.css' %}" />
+{% endblock meta %}
+{% block atas %} <span>Detail Transaksi</span> {% endblock atas %}
+{% block content %}
+Total {{transaksi.total_harga}}
+{% for item in transaksi.detailtransaksi_set.all %}
+  {% if item.jumlah > 0 %}
+    <h5>{{item.menu.nama}} {{item.jumlah}} {{item.harga}}</h5>
+  {% endif %}  
+{% endfor %}
+{% endblock content %} 
+{% block button %} Bayar {% endblock button %}
+{% block script %}
+<script src="{% static 'js/kasir.js' %}"></script>
+{% endblock script %}
