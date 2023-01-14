@@ -14,6 +14,10 @@ body {
   padding-top: 10px;
 }
 
+.navbar-brand, .nav-link {
+  color: white;
+}
+
 .card {
   margin: 0;
 }
@@ -27,6 +31,6 @@ body {
 
 .konten {
   padding: 10px;
-  margin-top: 80px;
+  margin-top: 95px;
   margin-bottom: 120px;
 }
