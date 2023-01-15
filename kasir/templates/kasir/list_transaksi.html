@@ -4,8 +4,17 @@
 {% endblock meta %}
 {% block atas %} <span>List Transaksi</span> {% endblock atas %}
 {% block content %}
+<ul class="nav nav-tabs justify-content-center">
+  <li class="nav-item" id="pending">
+    <a class="nav-link active" id="pending2">Pending</a>
+  </li>
+  <li class="nav-item" id="selesai">
+    <a class="nav-link" id="selesai2">Selesai</a>
+  </li>
+  </li>
+</ul>
 {% for transaksi in transaksis %}
-  <div class="card d-flex margin-card" data-transaksi-id="{{ transaksi.id }}">
+  <div class="card d-flex margin-card hidden" data-transaksi-id="{{ transaksi.id }}">
     <div class="card-left">
       <div>Order #{{transaksi.id}}</div>
       <div>Total Item:{{transaksi.total_item}}</div>

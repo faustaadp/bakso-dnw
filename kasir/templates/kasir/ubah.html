@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% load static %} {% block meta %}
+<title>Ubah Transaksi</title>
+<link rel="stylesheet" href="{% static 'css/kasir.css' %}" />
+{% endblock meta %} 
+{% block atas %} <span>Ubah Transaksi</span> {% endblock atas %}
+{% block content %}
+<form id="form-kasir" method="post" action="{% url 'ubah' transaksi_id %}" class="form">
+  <div class="luar">
+    {% csrf_token %}
+    {% for menu in menus %}
+    <div class="card d-flex margin-card">
+      <div class="card-image">
+        <img class="img-responsive" src="{{ menu.gambar.url }}" alt="{{ menu.nama }}">
+      </div>
+      <div class="card-content">
+        <h5 class="card-title">{{ menu.nama }}</h5>
+        <div class="input-group">
+          <button type="button" class="btn-decrement btn-circle">-</button>
+          <input id="input" type="number" name="{{ menu.nama }}" value="{{menu.jumlah}}" class="form-control jumlah-item" data-harga="{{ menu.harga }}" min="0"/>
+          <button type="button" class="btn-increment btn-circle">+</button>
+        </div>
+      </div>
+      <div class="card-price text-center" >
+        <p id="harga">Rp {{ menu.harga }}</p>
+      </div>
+    </div>    
+    {% endfor %}
+  </div>
+</form>
+
+<div class="card">
+  <div class="card-body fixed-bottom justify-content-center">
+    <h5>
+      <div class="d-flex">
+        <div>
+          Total Harga
+        </div>
+        <div class="ml-auto d-flex">
+          <div>Rp&nbsp;</div>
+          <div id="total">
+            {{total_harga}}
+          </div>  
+        </div>
+      </div>
+      </h5>
+    <button id="submit" type="submit" class="btn btn-primary rounded-5 p-3" style="width:100%;">
+      Simpan
+    </button>
+  </div>
+</div>
+{% endblock content %} 
+{% block script %}
+<script src="{% static 'js/kasir.js' %}"></script>
+{% endblock script %}

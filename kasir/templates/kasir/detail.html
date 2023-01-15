@@ -16,9 +16,15 @@
 {% endfor %}
 <tr>
   <td colspan="2" style="font-weight: bold; text-align: center;">Total</td>
-  <td style="text-align: right; font-weight: bold;">Rp {{ transaksi.total_harga }}</td>
+  <td style="text-align: right; font-weight: bold; padding-right: 5px;">Rp {{ transaksi.total_harga }}</td>
 </tr>
 </table>
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 10px;">
+  {% if not transaksi.status %}
+    <a href="{% url 'ubah' transaksi.id %}" style="color: #1A72DD; padding-bottom: 5px;"><i class="fas fa-pen"></i> Ubah Transaksi</a>
+  {% endif %}
+  <a href="{% url 'hapus' transaksi.id %}" style="color: red; padding-bottom: 5px;"><i class="fas fa-trash"></i> Hapus Transaksi</a>
+</div>
 {% if not transaksi.status %}
   <div class="card">
     <div class="card-body fixed-bottom justify-content-center">

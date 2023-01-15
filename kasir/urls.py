@@ -9,6 +9,8 @@ urlpatterns = [
     path('list-transaksi', views.list_transaksi, name='list_transaksi'),
     path('detail/<int:id>', views.detail, name='detail'),
     path('ubah-status/<int:id>', views.ubah_status, name='ubah_status'),
+    path('hapus/<int:id>', views.hapus, name='hapus'),
+    path('ubah/<int:id>', views.ubah, name='ubah'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
