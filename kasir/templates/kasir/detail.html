@@ -22,12 +22,33 @@
 {% if not transaksi.status %}
   <div class="card">
     <div class="card-body fixed-bottom justify-content-center">
-      <button id="submit" type="submit" class="btn btn-primary rounded-5 p-3" style="width:100%;">
-        Bayar
+      <button id="submit" type="submit" class="btn btn-primary rounded-5 p-3" style="width:100%;" data-toggle="modal" data-target="#exampleModal">
+        Bayar 
       </button>
     </div>
   </div>
+
 {% endif %}
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:999">
+    <div class="modal-dialog d-flex align-items-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold ;">Bayar Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              Apakah Anda yakin ingin melakukan pembayaran? 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+              <button type="button" class="btn btn-primary">Iya</button>
+            </div>
+        </div>
+      </div>
+    </div>
 {% endblock content %} 
 {% block script %}
 <script src="{% static 'js/detail.js' %}"></script>

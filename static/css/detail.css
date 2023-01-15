@@ -12,3 +12,11 @@ table tr {
 table td {
   padding: 7px 0;
 }
+
+.modal {
+position: unset;
+}
+
+.modal-backdrop {
+  position: relative;
+}

@@ -1,8 +1,8 @@
 $(document).ready(function() {
-    document.getElementById("submit").addEventListener("click", function(){
-        var currentUrl = window.location.href; // mendapatkan url saat ini
-        var splitUrl = currentUrl.split("/"); // memisahkan url berdasarkan "/"
-        var id = splitUrl[splitUrl.length - 1]; // ambil elemen terakhir dari array yang dihasilkan dari splitUrl, yang merupakan id
-        window.location.href = `/kasir/ubah-status/` + id;
-    });
-});
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var id = button.data('transaksi-id') // Extract info from data-* attributes
+      var modal = $(this)
+      modal.find('.modal-footer .btn-primary').attr("href", "/kasir/ubah-status/" + id)
+    })
+  });
