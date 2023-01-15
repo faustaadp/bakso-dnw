@@ -5,8 +5,7 @@
 {% block atas %} <span>List Transaksi</span> {% endblock atas %}
 {% block content %}
 {% for transaksi in transaksis %}
-<a href="{% url 'detail' transaksi.id %}">
-  <div class="card d-flex margin-card">
+  <div class="card d-flex margin-card" data-transaksi-id="{{ transaksi.id }}">
     <div class="card-left">
       <div>Order #{{transaksi.id}}</div>
       <div>Total Item:{{transaksi.total_item}}</div>
@@ -25,10 +24,8 @@
       </div>
     </div>
   </div>  
-</a>    
 {% endfor %}
 {% endblock content %} 
-{% block button %} Simpan {% endblock button %}
 {% block script %}
-<script src="{% static 'js/kasir.js' %}"></script>
+<script src="{% static 'js/list_transaksi.js' %}"></script>
 {% endblock script %}
