@@ -21,31 +21,35 @@
         </div>
       </div>
       <div class="card-price text-center" >
-        <p id="harga">Rp {{ menu.harga|floatformat:0 }}</p>
+        <p id="harga">Rp {{ menu.harga }}</p>
       </div>
     </div>    
     {% endfor %}
   </div>
 </form>
-{% endblock content %}
 
-{% block tambahan %}
-<h5>
-<div class="d-flex">
-  <div>
-    Total Harga
-  </div>
-  <div class="ml-auto d-flex">
-    <div>Rp&nbsp;</div>
-    <div id="total">
-      0
-    </div>  
+
+<div class="card">
+  <div class="card-body fixed-bottom justify-content-center">
+    <h5>
+      <div class="d-flex">
+        <div>
+          Total Harga
+        </div>
+        <div class="ml-auto d-flex">
+          <div>Rp&nbsp;</div>
+          <div id="total">
+            0
+          </div>  
+        </div>
+      </div>
+      </h5>
+    <button id="submit" type="submit" class="btn btn-primary rounded-5 p-3" style="width:100%;">
+      Simpan
+    </button>
   </div>
 </div>
-</h5>
-{% endblock tambahan %} 
-{% block button %} Simpan {% endblock button %}
-
+{% endblock content %} 
 {% block script %}
 <script src="{% static 'js/kasir.js' %}"></script>
 {% endblock script %}

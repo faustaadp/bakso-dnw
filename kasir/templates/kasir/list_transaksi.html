@@ -1,18 +1,19 @@
 {% extends 'base.html' %} {% load static %} {% block meta %}
 <title>List Transaksi</title>
 <link rel="stylesheet" href="{% static 'css/list_transaksi.css' %}" />
-{% endblock meta %} {% block content %}
+{% endblock meta %}
 {% block atas %} <span>List Transaksi</span> {% endblock atas %}
+{% block content %}
 {% for transaksi in transaksis %}
-  <div class="card d-flex margin-card">
+  <div class="card d-flex margin-card" data-transaksi-id="{{ transaksi.id }}">
     <div class="card-left">
       <div>Order #{{transaksi.id}}</div>
-      <div>Total item: {{transaksi.total_item}}</div>
+      <div>Total Item:{{transaksi.total_item}}</div>
     </div>
-    <div class="card-content">
+    <div class="card-center">
       <div>Rp {{ transaksi.total_harga|floatformat:0 }}</div>
     </div>
-    <div class="card-price text-center">
+    <div class="card-right text-center">
       <div>{{ transaksi.waktu|time:"H:i" }}</div>
       <div>
         {% if transaksi.status %}
@@ -22,10 +23,9 @@
         {% endif %}
       </div>
     </div>
-  </div>      
+  </div>  
 {% endfor %}
 {% endblock content %} 
 {% block script %}
-{% block button %} Simpan {% endblock button %}
-<script src="{% static 'js/kasir.js' %}"></script>
+<script src="{% static 'js/list_transaksi.js' %}"></script>
 {% endblock script %}

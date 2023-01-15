@@ -1,0 +1,14 @@
+table {
+  margin: 0 auto;
+  width: 100%;
+  padding: 15px;
+}
+
+table tr {
+  border-bottom: 1px solid #ccc; /* garis pembatas pada setiap baris */
+  padding-bottom: 10px;
+}
+
+table td {
+  padding: 7px 0;
+}

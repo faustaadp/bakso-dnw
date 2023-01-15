@@ -23,3 +23,5 @@ class DetailTransaksi(models.Model):
     transaksi = models.ForeignKey(Transaksi, on_delete=models.CASCADE)
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
     jumlah = models.PositiveIntegerField()
+    harga = models.PositiveIntegerField()
+    subtotal = models.PositiveIntegerField()

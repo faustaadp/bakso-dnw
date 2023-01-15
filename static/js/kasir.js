@@ -5,11 +5,13 @@ $(document).ready(function() {
     let jumlahItems = document.querySelectorAll('.jumlah-item');
     // Saya ingin for loop setiap item dan mengambil harga dan jumlah, lalu totalHarga += harga * jumlah
     jumlahItems.forEach(item => {
-      let harga = item.getAttribute('data-harga');
+      let harga = item.getAttribute('data-harga').replace(/,/g, "");;
       let jumlah = item.value;
+      console.log(harga)
+      console.log(jumlah)
       totalHarga += harga * jumlah;
     });
-    document.querySelector('#total').innerHTML = totalHarga;
+    document.querySelector('#total').innerHTML = totalHarga.toLocaleString();
   }
 
   // Event listener pada input jumlah item
