@@ -76,6 +76,10 @@ def ubah(request, id):
     if request.method == 'POST':
         form = OrderForm(request.POST, menu=menus)
         if form.is_valid():
+            nominal_ubah = True
+            detail_pembayaran = DetailPembayaran.objects.get(transaksi = transaksi)
+            if(detail_pembayaran.nominal_bayar != transaksi.total_harga):
+                nominal_ubah = False
             transaksi.total_harga = 0
             transaksi.total_item = 0
             for key, value in request.POST.items():
@@ -91,6 +95,10 @@ def ubah(request, id):
                     detail_transaksi.subtotal=int(value) * int(Menu.objects.filter(nama=str(key)).first().harga)
                     detail_transaksi.save()
             transaksi.save()
+            if (nominal_ubah):
+                detail_pembayaran.nominal_bayar = transaksi.total_harga
+                detail_pembayaran.save()
+            
             return redirect('detail', id=id)
     else:
         form = OrderForm(menu=menus)

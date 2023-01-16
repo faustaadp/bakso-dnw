@@ -34,8 +34,50 @@
   {% if not transaksi.status %}
     <a href="{% url 'ubah' transaksi.id %}" style="color: #1A72DD; padding-bottom: 5px;"><i class="fas fa-pen"></i> Ubah Transaksi</a>
   {% endif %}
-  <a href="{% url 'hapus' transaksi.id %}" style="color: red; padding-bottom: 5px;"><i class="fas fa-trash"></i> Hapus Transaksi</a>
+  <a id="hps-btn" style="color: red; padding-bottom: 5px;"><i class="fas fa-trash"></i> Hapus Transaksi</a>
 </div>
+
+<div class="modal" tabindex="-1" id="myModal" style="margin-top: 100px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Pembayaran</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin melakukan pembayaran untuk transaksi ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="batal" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="bayar-btn">Bayar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" id="myModal2" style="margin-top: 100px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button type="button" class="close" id="batal2" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin untuk menghapus transaksi ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="batal3" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="hapus-btn">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 {% if not transaksi.status %}
   <div class="card">
     <div class="card-body fixed-bottom justify-content-center">
