@@ -15,8 +15,19 @@
   {% endif %}  
 {% endfor %}
 <tr>
-  <td colspan="2" style="font-weight: bold; text-align: center;">Total</td>
+  <td colspan="2" style="font-weight: bold;">Subtotal</td>
   <td style="text-align: right; font-weight: bold; padding-right: 5px;">Rp {{ transaksi.total_harga }}</td>
+</tr>
+{% if transaksi.total_harga != detail_pembayaran.nominal_bayar %}
+<tr>
+  <td colspan="2" style="font-weight: bold;">Total Bayar</td>
+  <td style="text-align: right; font-weight: bold; padding-right: 5px;">Rp {{ detail_pembayaran.nominal_bayar }}</td>
+</tr>
+{% endif %}
+<tr>
+  <td colspan="2" style="font-weight: bold;">Detail Pembayaran</td>
+  <td style="text-align: right; font-weight: bold; padding-right: 5px;">
+    <a href="{% url 'detail_pembayaran' transaksi.id %}" class="my-link"> > </a> </td>
 </tr>
 </table>
 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 10px;">

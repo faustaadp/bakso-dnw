@@ -95,3 +95,9 @@ a {
   margin: 0;
   border-width: 0;
 }
+
+.strike-through {
+  text-decoration: line-through; /* menambahkan garis miring */
+  color: red; /* mengubah warna teks menjadi merah */
+}
+

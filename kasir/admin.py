@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kategori, Menu, Transaksi, DetailTransaksi
+from .models import Kategori, Menu, Transaksi, DetailTransaksi, DetailPembayaran
 
 # Register your models here.
 class KategoriAdmin(admin.ModelAdmin):
@@ -17,3 +17,7 @@ admin.site.register(Transaksi, TransaksiAdmin)
 class DetailTransaksiAdmin(admin.ModelAdmin):
     list_display    = ['menu', 'jumlah', 'transaksi']
 admin.site.register(DetailTransaksi, DetailTransaksiAdmin)
+
+class DetailPembayaranAdmin(admin.ModelAdmin):
+    list_display    = ['subtotal', 'nominal_bayar', 'catatan']
+admin.site.register(DetailPembayaran, DetailPembayaranAdmin)
