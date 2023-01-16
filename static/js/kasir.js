@@ -12,6 +12,18 @@ $(document).ready(function() {
       totalHarga += harga * jumlah;
     });
     document.querySelector('#total').innerHTML = totalHarga.toLocaleString();
+    const simpanBtn = document.querySelector('#submit');
+    if (totalHarga === 0) {
+      // jika iya, tombol simpan tidak bisa diklik dan warnanya berubah menjadi abu-abu
+      simpanBtn.disabled = true;
+      simpanBtn.style.backgroundColor = '#d1e3f8';
+      simpanBtn.style.borderColor = '#d1e3f8';
+      simpanBtn.style.opacity = 1
+    } else {
+        // jika tidak, tombol simpan bisa diklik dan warnanya kembali seperti semula
+        simpanBtn.disabled = false;
+        simpanBtn.style.backgroundColor = '#007bff';
+    }
   }
 
   // Event listener pada input jumlah item
