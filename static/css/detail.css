@@ -12,3 +12,16 @@ table tr {
 table td {
   padding: 7px 0;
 }
+
+.my-link {
+  text-decoration: none; /* menghilangkan garis bawah */
+}
+
+.my-link:hover {
+  color: black; /* atau warna lain yang diinginkan */
+}
+
+.my-link:active {
+  color: black; /* atau warna lain yang diinginkan */
+  text-decoration: none; /* menghilangkan garis bawah */
+}

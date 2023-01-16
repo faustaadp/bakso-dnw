@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render, redirect
-from .models import DetailTransaksi, Menu, Transaksi
-from .forms import OrderForm
+from .models import DetailTransaksi, Menu, Transaksi, DetailPembayaran
+from .forms import OrderForm, PembayaranForm
 
 def index(request):
     menus = Menu.objects.all()
@@ -20,6 +20,12 @@ def index(request):
                         harga=int(Menu.objects.filter(nama=str(key)).first().harga),
                         subtotal=int(value) * int(Menu.objects.filter(nama=str(key)).first().harga))
             transaksi.save()
+            DetailPembayaran.objects.create(
+                transaksi = transaksi,
+                subtotal = transaksi.total_harga,
+                nominal_bayar =  transaksi.total_harga,
+                catatan = ""
+            )
             return redirect('list_transaksi')
     else:
         form = OrderForm(menu=menus)
@@ -27,11 +33,31 @@ def index(request):
 
 def list_transaksi(request):
     transaksis = Transaksi.objects.all().order_by('status')
+    for transaksi in transaksis:
+        transaksi.nominal_bayar = DetailPembayaran.objects.get(transaksi = transaksi).nominal_bayar
+
     return render(request, 'kasir/list_transaksi.html', {'transaksis': transaksis})
 
 def detail(request, id):
     transaksi = Transaksi.objects.get(id=id)
-    return render(request, 'kasir/detail.html', {'transaksi': transaksi})
+    detail_pembayaran = DetailPembayaran.objects.get(transaksi = transaksi)
+    return render(request, 'kasir/detail.html', {'transaksi': transaksi, 'detail_pembayaran': detail_pembayaran} )
+
+def detail_pembayaran(request, id):
+    transaksi = Transaksi.objects.get(id=id)
+    if request.method == 'POST':
+        form = PembayaranForm(request.POST)
+        if form.is_valid():
+            detail_pembayaran =  DetailPembayaran.objects.get(transaksi = transaksi)
+            detail_pembayaran.transaksi = transaksi
+            detail_pembayaran.subtotal = transaksi.total_harga
+            detail_pembayaran.nominal_bayar = form.data.get("nominal_bayar")
+            detail_pembayaran.catatan = form.data.get("catatan")
+            detail_pembayaran.save()
+            return redirect('detail', id=id)
+    else:
+        form = PembayaranForm(initial={'subtotal':transaksi.total_harga})
+    return render(request, 'kasir/bayar.html', {'form': form})
 
 def ubah_status(request, id):
     transaksi = Transaksi.objects.get(id=id)

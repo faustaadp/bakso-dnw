@@ -25,3 +25,10 @@ class DetailTransaksi(models.Model):
     jumlah = models.PositiveIntegerField()
     harga = models.PositiveIntegerField()
     subtotal = models.PositiveIntegerField()
+
+class DetailPembayaran(models.Model):
+    transaksi = models.ForeignKey(Transaksi, on_delete=models.CASCADE)
+    subtotal = models.PositiveIntegerField()
+    nominal_bayar = models.PositiveIntegerField()
+    catatan = models.CharField(max_length = 250, blank=True, default="")
+

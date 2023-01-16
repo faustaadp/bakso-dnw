@@ -1,4 +1,5 @@
 from django import forms
+from .models import DetailPembayaran
 
 class KasirForm(forms.Form):
     nama_menu = forms.CharField(max_length=50)
@@ -12,3 +13,10 @@ class OrderForm(forms.Form):
         super(OrderForm, self).__init__(*args, **kwargs)
         for menu_item in menu:
             self.fields[menu_item.nama] = forms.IntegerField(min_value=0, initial=0)
+
+class PembayaranForm(forms.ModelForm):
+    subtotal = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    
+    class Meta:
+        model = DetailPembayaran
+        fields = ['nominal_bayar', 'catatan']

@@ -20,7 +20,12 @@
       <div>Total Item:{{transaksi.total_item}}</div>
     </div>
     <div class="card-center">
-      <div>Rp {{ transaksi.total_harga|floatformat:0 }}</div>
+      {% if transaksi.total_harga != transaksi.nominal_bayar %}
+      <div class="strike-through">Rp {{ transaksi.total_harga }}</div>
+      <div>Rp {{ transaksi.nominal_bayar }}</div>
+      {% else %}
+      <div>Rp {{ transaksi.total_harga }}</div>
+      {% endif %}
     </div>
     <div class="card-right text-center">
       <div>{{ transaksi.waktu|time:"H:i" }}</div>

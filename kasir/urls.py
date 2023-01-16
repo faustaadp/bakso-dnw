@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('list-transaksi', views.list_transaksi, name='list_transaksi'),
     path('detail/<int:id>', views.detail, name='detail'),
+    path('detail-pembayaran/<int:id>', views.detail_pembayaran, name='detail_pembayaran'),
     path('ubah-status/<int:id>', views.ubah_status, name='ubah_status'),
     path('hapus/<int:id>', views.hapus, name='hapus'),
     path('ubah/<int:id>', views.ubah, name='ubah'),
