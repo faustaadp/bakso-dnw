@@ -32,7 +32,7 @@ def index(request):
     return render(request, 'kasir/index.html', {'form': form, 'menus': menus})
 
 def list_transaksi(request):
-    transaksis = Transaksi.objects.all().order_by('status')
+    transaksis = Transaksi.objects.filter(waktu__date=datetime.date.today()).order_by('status')
     for transaksi in transaksis:
         transaksi.nominal_bayar = DetailPembayaran.objects.get(transaksi = transaksi).nominal_bayar
 
