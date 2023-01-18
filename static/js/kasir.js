@@ -69,6 +69,9 @@ $(document).ready(function() {
     });
   });
   document.getElementById("submit").addEventListener("click", function(){
-    document.getElementById("form-kasir").submit();
-    });
+    console.log(this.disabled)
+    if(!this.disabled){
+      document.getElementById("form-kasir").submit();
+    }
+  });
 });

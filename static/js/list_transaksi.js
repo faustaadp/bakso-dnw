@@ -1,3 +1,28 @@
+const navTab = document.querySelector('.nav-tabs');
+const hammer = new Hammer(navTab);
+console.log(hammer)
+hammer.on('swiperight', function(event) {
+    selesaiBtn2.classList.add("active")
+    pendingBtn2.classList.remove("active")
+  // looping untuk setiap card transaksi
+  const transaksiCards = document.querySelectorAll('.card');
+  transaksiCards.forEach(function(card) {
+    // jika status transaksi sudah bayar, tampilkan card tersebut
+    if (card.querySelector('.status-box').textContent == "Sudah Bayar") {
+        card.classList.remove("hidden");
+        card.style.visibility = "visible";
+        
+    } else {
+         // jika tidak, sembunyikan card tersebut
+         card.classList.add("hidden");
+         card.style.visibility = "hidden";
+         
+    }
+    });
+    // code untuk mengubah tab menjadi selesai
+});
+
+
 const cards = document.querySelectorAll('.card');
 
 cards.forEach(card => {
