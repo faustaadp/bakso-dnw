@@ -5,7 +5,7 @@ hammer.on('swiperight', function(event) {
     selesaiBtn2.classList.add("active")
     pendingBtn2.classList.remove("active")
   // looping untuk setiap card transaksi
-  const transaksiCards = document.querySelectorAll('.card');
+  const transaksiCards = document.querySelectorAll('#card_transaksi');
   transaksiCards.forEach(function(card) {
     // jika status transaksi sudah bayar, tampilkan card tersebut
     if (card.querySelector('.status-box').textContent == "Sudah Bayar") {
@@ -23,7 +23,7 @@ hammer.on('swiperight', function(event) {
 });
 
 
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('#card_transaksi');
 
 cards.forEach(card => {
     card.addEventListener('click', (event) => {
@@ -34,7 +34,7 @@ cards.forEach(card => {
     });
 });
 
-const transaksiCards = document.querySelectorAll('.card');
+const transaksiCards = document.querySelectorAll('#card_transaksi');
   transaksiCards.forEach(function(card) {
     // jika status transaksi sudah bayar, tampilkan card tersebut
     if (card.querySelector('.status-box').textContent == "Belum Bayar") {
@@ -58,7 +58,7 @@ pendingBtn.addEventListener('click', function() {
     pendingBtn2.classList.add("active")
     selesaiBtn2.classList.remove("active")
   // looping untuk setiap card transaksi
-  const transaksiCards = document.querySelectorAll('.card');
+  const transaksiCards = document.querySelectorAll('#card_transaksi');
   transaksiCards.forEach(function(card) {
     // jika status transaksi belum bayar, tampilkan card tersebut
     if (card.querySelector('.status-box').textContent == "Belum Bayar") {

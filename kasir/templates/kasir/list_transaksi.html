@@ -14,7 +14,7 @@
   </li>
 </ul>
 {% for transaksi in transaksis %}
-  <div class="card d-flex margin-card hidden" data-transaksi-id="{{ transaksi.id }}">
+  <div id="card_transaksi" class="card d-flex margin-card hidden" data-transaksi-id="{{ transaksi.id }}">
     <div class="card-left">
       <div>Order #{{transaksi.id}}</div>
       <div>Total Item:{{transaksi.total_item}}</div>
@@ -39,6 +39,23 @@
     </div>
   </div>  
 {% endfor %}
+<div class="card" style="border-width: 0;">
+  <div class="card-body fixed-bottom justify-content-center">
+    <h5>
+      <div class="d-flex" style="font-size: medium;">
+        <div>
+          Total Pemasukan
+        </div>
+        <div class="ml-auto d-flex">
+          <div>Rp&nbsp;</div>
+          <div id="total">
+            {{total_transaksi}}
+          </div>  
+        </div>
+      </div>
+      </h5>
+  </div>
+</div>
 {% endblock content %} 
 {% block script %}
 <script src="{% static 'js/list_transaksi.js' %}"></script>

@@ -1,3 +1,4 @@
+from datetime import timezone
 from django.db import models
 
 # Create your models here.
@@ -18,6 +19,7 @@ class Transaksi(models.Model):
     waktu = models.DateTimeField()
     total_item = models.PositiveIntegerField()
     total_harga = models.PositiveIntegerField()
+    waktu_selesai = models.DateTimeField(null=True)
 
 class DetailTransaksi(models.Model):
     transaksi = models.ForeignKey(Transaksi, on_delete=models.CASCADE)

@@ -19,7 +19,7 @@
   height: 30px;
 }
 
-.card {
+#card_transaksi {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -100,4 +100,3 @@ a {
   text-decoration: line-through; /* menambahkan garis miring */
   color: red; /* mengubah warna teks menjadi merah */
 }
-
