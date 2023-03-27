@@ -17,7 +17,7 @@ import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
 
 
 
@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'kasir',
-    'pwa'
 ]
 
 MIDDLEWARE = [
@@ -174,32 +173,32 @@ MEDIA_URL = '/media/'
 USE_THOUSAND_SEPARATOR = True
 TIME_ZONE = 'Asia/Jakarta'
 
-PWA_APP_NAME = 'geeksforgeeks'
-PWA_APP_DESCRIPTION = "GeeksForGeeks PWA"
-PWA_APP_THEME_COLOR = '#000000'
-PWA_APP_BACKGROUND_COLOR = '#ffffff'
-PWA_APP_DISPLAY = 'standalone'
-PWA_APP_SCOPE = '/'
-PWA_APP_ORIENTATION = 'any'
-PWA_APP_START_URL = '/'
-PWA_APP_STATUS_BAR_COLOR = 'default'
-PWA_APP_ICONS = [
-	{
-		'src': 'static/images/dw.jpeg',
-		'sizes': '300x300'
-	}
-]
-PWA_APP_ICONS_APPLE = [
-	{
-		'src': 'static/images/dw.jpeg',
-		'sizes': '300x300'
-	}
-]
-PWA_APP_SPLASH_SCREEN = [
-	{
-		'src': 'static/images/dw.jpeg',
-		'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
-	}
-]
-PWA_APP_DIR = 'ltr'
-PWA_APP_LANG = 'en-US'
+# PWA_APP_NAME = 'geeksforgeeks'
+# PWA_APP_DESCRIPTION = "GeeksForGeeks PWA"
+# PWA_APP_THEME_COLOR = '#000000'
+# PWA_APP_BACKGROUND_COLOR = '#ffffff'
+# PWA_APP_DISPLAY = 'standalone'
+# PWA_APP_SCOPE = '/'
+# PWA_APP_ORIENTATION = 'any'
+# PWA_APP_START_URL = '/'
+# PWA_APP_STATUS_BAR_COLOR = 'default'
+# PWA_APP_ICONS = [
+# 	{
+# 		'src': 'static/images/dw.jpeg',
+# 		'sizes': '300x300'
+# 	}
+# ]
+# PWA_APP_ICONS_APPLE = [
+# 	{
+# 		'src': 'static/images/dw.jpeg',
+# 		'sizes': '300x300'
+# 	}
+# ]
+# PWA_APP_SPLASH_SCREEN = [
+# 	{
+# 		'src': 'static/images/dw.jpeg',
+# 		'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+# 	}
+# ]
+# PWA_APP_DIR = 'ltr'
+# PWA_APP_LANG = 'en-US'

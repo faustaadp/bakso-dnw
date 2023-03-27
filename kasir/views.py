@@ -8,7 +8,11 @@ def index(request):
     if request.method == 'POST':
         form = OrderForm(request.POST, menu=menus)
         if form.is_valid():
-            transaksi = Transaksi.objects.create(waktu=datetime.datetime.now(), total_harga=0, total_item=0, status=False)
+            transaksi = Transaksi.objects.create(
+                waktu=datetime.datetime.now(), 
+                total_harga=0, 
+                total_item=0, 
+                status=False)
             for key, value in request.POST.items():
                 if(Menu.objects.filter(nama=str(key)).exists()):
                     transaksi.total_harga += int(Menu.objects.filter(nama=str(key)).first().harga) * int(value)
@@ -33,10 +37,13 @@ def index(request):
 
 def list_transaksi(request):
     transaksis = Transaksi.objects.filter(waktu__date=datetime.date.today()).order_by('status')
+    total_transaksi = 0
     for transaksi in transaksis:
         transaksi.nominal_bayar = DetailPembayaran.objects.get(transaksi = transaksi).nominal_bayar
+        if(transaksi.status):
+            total_transaksi += DetailPembayaran.objects.get(transaksi = transaksi).nominal_bayar
 
-    return render(request, 'kasir/list_transaksi.html', {'transaksis': transaksis})
+    return render(request, 'kasir/list_transaksi.html', {'transaksis': transaksis, 'total_transaksi':total_transaksi})
 
 def detail(request, id):
     transaksi = Transaksi.objects.get(id=id)
@@ -45,10 +52,10 @@ def detail(request, id):
 
 def detail_pembayaran(request, id):
     transaksi = Transaksi.objects.get(id=id)
+    detail_pembayaran = DetailPembayaran.objects.get(transaksi = transaksi)
     if request.method == 'POST':
         form = PembayaranForm(request.POST)
         if form.is_valid():
-            detail_pembayaran =  DetailPembayaran.objects.get(transaksi = transaksi)
             detail_pembayaran.transaksi = transaksi
             detail_pembayaran.subtotal = transaksi.total_harga
             detail_pembayaran.nominal_bayar = form.data.get("nominal_bayar")
@@ -56,11 +63,12 @@ def detail_pembayaran(request, id):
             detail_pembayaran.save()
             return redirect('detail', id=id)
     else:
-        form = PembayaranForm(initial={'subtotal':transaksi.total_harga})
+        form = PembayaranForm(initial={'subtotal':transaksi.total_harga, 'nominal_bayar':detail_pembayaran.nominal_bayar, 'catatan': detail_pembayaran.catatan})
     return render(request, 'kasir/bayar.html', {'form': form})
 
 def ubah_status(request, id):
     transaksi = Transaksi.objects.get(id=id)
+    transaksi.waktu_selesai = datetime.datetime.now()
     transaksi.status = True
     transaksi.save()
     return redirect(list_transaksi)

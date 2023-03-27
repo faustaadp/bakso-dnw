@@ -9,14 +9,14 @@
       {% csrf_token %}
       <div class="form-group">
         <label for="subtotal">Subtotal</label>
-        <input type="text" class="form-control" id="subtotal" name="subtotal" value="{{ form.subtotal.value }}" readonly>      </div>
+        <input type="text" class="form-control" id="subtotal" name="subtotal" value="{{ form.subtotal.value }}" readonly></div>
         <div class="form-group">
           <label for="nominal_bayar">Nominal Bayar</label>
-          <input type="number" class="form-control" id="nominal_bayar" name="nominal_bayar">
+          <input type="number" class="form-control" id="nominal_bayar" name="nominal_bayar" value='{{ form.nominal_bayar.value|safe }}'>  
         </div>
         <div class="form-group">
           <label for="catatan">Catatan</label>
-          <textarea class="form-control" id="catatan" name="catatan" rows="3">{{ form.catatan.value }}</textarea>
+          <textarea class="form-control" id="catatan" name="catatan" rows="1" value='{{ form.catatan.value }}'>{{ form.catatan.value }}</textarea>
         </div>
     </form>
 </div>

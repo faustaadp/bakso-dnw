@@ -11,7 +11,7 @@ class MenuAdmin(admin.ModelAdmin):
 admin.site.register(Menu, MenuAdmin)
 
 class TransaksiAdmin(admin.ModelAdmin):
-    list_display    = ['waktu', 'total_harga']
+    list_display    = ['waktu', 'total_harga', 'waktu_selesai']
 admin.site.register(Transaksi, TransaksiAdmin)
 
 class DetailTransaksiAdmin(admin.ModelAdmin):

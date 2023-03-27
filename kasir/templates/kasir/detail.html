@@ -15,18 +15,24 @@
   {% endif %}  
 {% endfor %}
 <tr>
-  <td colspan="2" style="font-weight: bold;">Subtotal</td>
-  <td style="text-align: right; font-weight: bold; padding-right: 5px;">Rp {{ transaksi.total_harga }}</td>
+  <td colspan="2" >Subtotal</td>
+  <td style="text-align: right; padding-right: 5px;">Rp {{ transaksi.total_harga }}</td>
 </tr>
 {% if transaksi.total_harga != detail_pembayaran.nominal_bayar %}
 <tr>
-  <td colspan="2" style="font-weight: bold;">Total Bayar</td>
-  <td style="text-align: right; font-weight: bold; padding-right: 5px;">Rp {{ detail_pembayaran.nominal_bayar }}</td>
+  <td colspan="2" >Total Bayar</td>
+  <td style="text-align: right;  padding-right: 5px;">Rp {{ detail_pembayaran.nominal_bayar }}</td>
+</tr>
+{% endif %}
+{% if detail_pembayaran.catatan != "" %}
+<tr>
+  <td colspan="2" >Catatan</td>
+  <td colspan="1" style="text-align: right;  padding-right: 5px;">{{ detail_pembayaran.catatan }}</td>
 </tr>
 {% endif %}
 <tr>
-  <td colspan="2" style="font-weight: bold;">Detail Pembayaran</td>
-  <td style="text-align: right; font-weight: bold; padding-right: 5px;">
+  <td colspan="2">Detail Pembayaran</td>
+  <td style="text-align: right;  padding-right: 5px;">
     <a href="{% url 'detail_pembayaran' transaksi.id %}" class="my-link"> > </a> </td>
 </tr>
 </table>
